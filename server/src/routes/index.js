@@ -62,9 +62,9 @@ router.get('/cat', (req, res) => {
   dir = dir.join('/') + '/'
 
   glob(`src/file${dir}*.md`, {}, (err, files) => {
-
-    // 防止 CSRF
-    glob(`src/file/**`, {}, (err, files) => {
+    console.log(files)
+    // 防止 CSRFs
+    glob('src/file/**', {}, (err, files) => {
       files[0] = '~' // 初始化主目录
       files = files.filter(i => i.includes('.')) // 只保留文件
 
